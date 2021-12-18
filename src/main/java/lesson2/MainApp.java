@@ -22,7 +22,7 @@ public class MainApp {
                 new Cat("Семен",400,1),
                 new Human("Игнат",500,1),
                 new Human("Петр",200,3),
-                new Robot("пылесос",100,0)
+                new Robot("пылесос",500,0)
         };
 
         Barrier[] barriers = {
