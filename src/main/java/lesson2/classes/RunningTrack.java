@@ -6,4 +6,8 @@ public class RunningTrack extends Barrier{
     public RunningTrack(int lenght) {
         this.lenght = lenght;
     }
+
+    public int getLenght() {
+        return lenght;
+    }
 }
