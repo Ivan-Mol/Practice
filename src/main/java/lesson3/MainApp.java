@@ -33,7 +33,7 @@ public class MainApp {
     }
 
     public static int takeSumOfTwoDimensionalMassive(String[][] stringsMassive) throws MyArraySizeException, MyArrayDataException {
-        //Считает сколько всего символов и сравнивает с 16(4х4)
+
         arrayChecking(stringsMassive);
 
         int sumOfNumbers = 0;
