@@ -1,5 +1,7 @@
 package lesson3;
 
+import java.util.Arrays;
+
 /*      1. Создайте исключения: MyArraySizeException (неправильный размер массива), и
         MyArrayDataException (в ячейке массива лежит что-то не то);
 
@@ -19,52 +21,44 @@ package lesson3;
         Заметка: для преобразования строки в число можно использовать метод класса Integer:
         Integer. valueOf ( "1" )*/
 public class MainApp {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MyArraySizeException, MyArrayDataException {
         String[][] strings = {
-                {"1", "5", "3", "3"},
-                {"9", "5", "3", "4"},
-                {"1", "5", "9", "4"},
-                {"7", "8", "3","4"}
+                {"1","ф","3","3"},
+                {"9","5","6","4"},
+                {"1","5","9","4"},
+                {"7","8","3","2"}
         };
 
-        try {
-            System.out.println(takeSumOfTwoDimensionalMassive(strings));
-        } catch (MyArraySizeException | MyArrayDataException e) {
-            System.out.println(e.getMessage());
-        }
-
+        System.out.println(Arrays.deepToString(strings));
+        System.out.println(takeSumOfTwoDimensionalMassive(strings));
 
     }
 
     public static int takeSumOfTwoDimensionalMassive(String[][] stringsMassive) throws MyArraySizeException, MyArrayDataException {
         //Считает сколько всего символов и сравнивает с 16(4х4)
-        arrayChecking(stringsMassive);
-
-        int sumOfNumbers = 0;
+        int sumOfSymbols = 0;
 
         for (int i = 0; i < stringsMassive.length; i++) {
-            for (int j = 0; j < stringsMassive[i].length; j++) {
+            for (int j = 0; j <stringsMassive[i].length ; j++) {
+                sumOfSymbols ++;
+            }
+        }
+        if (sumOfSymbols!=16){
+            throw new MyArraySizeException();
+        }
+
+        int sumOfNumbers= 0;
+
+        for (int i = 0; i < stringsMassive.length; i++) {
+            for (int j = 0; j <stringsMassive[i].length ; j++) {
                 try {
-                    sumOfNumbers = sumOfNumbers + Integer.parseInt(stringsMassive[i][j]);
-                } catch (NumberFormatException e) {
-                    throw new MyArrayDataException(i,j);
+                    sumOfNumbers =sumOfNumbers + Integer.parseInt(stringsMassive[i][j]);
+                } catch (MyArrayDataException e) {
+                    System.out.println("Символ по адресу: строка - "+i + " столбец - "+j+ " не является числом");
                 }
             }
         }
         return sumOfNumbers;
-    }
-
-
-
-    public static void arrayChecking(String[][] strings) throws MyArraySizeException {
-        if (strings.length < 4) {
-            throw new MyArraySizeException();
-        }
-        for (int i = 0; i < strings.length; i++) {
-                if (strings[i].length < 4) {
-                    throw new MyArraySizeException();
-            }
-        }
     }
 
 
