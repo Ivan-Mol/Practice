@@ -3,8 +3,13 @@ package lesson4.classes;
 import java.util.ArrayList;
 
 public class Box<A extends Fruit> {
-   private Double boxWeight = 0.0;
-   private ArrayList<Fruit> fruitList = new ArrayList<>();
+   private Double boxWeight;
+   private ArrayList<Fruit> fruitList;
+
+   public Box(){
+       boxWeight = 0.0;
+       fruitList = new ArrayList<>();
+   }
 
     public void addFruit(Fruit fruit){
         if (fruitList.isEmpty()){
@@ -34,12 +39,17 @@ public class Box<A extends Fruit> {
     }
 
     public void putFromAnotherBox(Box box){
-        if (this.fruitList.get(0).getClass()==box.fruitList.get(0).getClass()){
-            fruitList.addAll(box.fruitList);
-        }
-        else{
-            System.out.println("Это коробки с разными фруктами");
-        }
+       if (box.fruitList.isEmpty()){
+           System.out.println("Из пустой сыплешь?");
+       }
+       else {
+           if (this.fruitList.isEmpty() || this.fruitList.get(0).getClass()==box.fruitList.get(0).getClass()){
+               fruitList.addAll(box.fruitList);
+           }
+           else{
+               System.out.println("Это коробки с разными фруктами");
+           }
+       }
     }
 
     @Override
