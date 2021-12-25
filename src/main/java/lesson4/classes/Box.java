@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Box<A extends Fruit> {
    private Double boxWeight = 0.0;
-   public ArrayList<Fruit> fruitList = new ArrayList<>();
+   private ArrayList<Fruit> fruitList = new ArrayList<>();
 
     public void addFruit(Fruit fruit){
         if (fruitList.isEmpty()){
@@ -22,12 +22,24 @@ public class Box<A extends Fruit> {
         }
     }
 
-    public Double getBoxWeight() {
+    public Double getWeight() {
         return boxWeight;
     }
 
-    public ArrayList getFruitList() {
-        return fruitList;
+    public boolean compare(Box box){
+        if (this.boxWeight==box.getWeight()){
+            return true;
+        }
+        else return false;
+    }
+
+    public void putFromAnotherBox(Box box){
+        if (this.fruitList.get(0).getClass()==box.fruitList.get(0).getClass()){
+            fruitList.addAll(box.fruitList);
+        }
+        else{
+            System.out.println("Это коробки с разными фруктами");
+        }
     }
 
     @Override

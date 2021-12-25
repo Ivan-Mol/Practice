@@ -1,6 +1,4 @@
-/*1. Написать метод, который меняет два элемента массива местами (массив может быть любого
-ссылочного типа).
-2. Написать метод, который преобразует массив в ArrayList.
+/*
 3. Задача:
 a. Даны классы Fruit -> Apple, Orange.
 b. Класс Box, в который можно складывать фрукты. Коробки условно сортируются по типу
@@ -25,22 +23,15 @@ import lesson4.classes.*;
 
 public class MainAppFruits {
     public static void main(String[] args) {
-        Apple apple1 = new Apple();
-        Apple apple2 = new Apple();
-        Orange orange1 = new Orange();
-
-        Box<Fruit> box = new Box<Fruit>();
-        Box<Fruit> box1 = new Box<Fruit>();
-
-        box.addFruit(apple1);
-        box.addFruit(apple2);
-        System.out.println(box.fruitList);
-        System.out.println(box.toString());
-        System.out.println(box.fruitList);
-        System.out.println(box1);
-        box1.addFruit(orange1);
-
-        System.out.println(box1);
+        Box appleBox = new Box();
+        for (int i = 0; i < 5; i++) {
+            appleBox.addFruit(new Apple());
+        }
+        Box orangeBox = new Box();
+        for (int i = 0; i < 7; i++) {
+            orangeBox.addFruit(new Orange());
+        }
+        System.out.println(orangeBox);
 
     }
 }
