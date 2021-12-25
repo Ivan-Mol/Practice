@@ -1,5 +1,8 @@
 package lesson4;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class ArraysMethods {
     public static <A> void replacingElementsInArray(A[] a1,int first,int second){
         //меняет местами первое и второе
@@ -16,5 +19,9 @@ public class ArraysMethods {
             array[second] = (A)firstData;
             a1 = array;
         }
+    }
+
+    public static <A> List arrayToList(A[] array){
+        return Arrays.asList(array);
     }
 }
