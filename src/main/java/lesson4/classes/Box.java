@@ -25,6 +25,12 @@ public class Box<A extends Fruit> {
     }
 
     public void putToAnotherBox(Box<A> box) {
+        if(this.equals(box)){
+            return;
+        }
+        if(box==null){
+            throw new IllegalArgumentException();
+        }
         if (this.fruitList.isEmpty()) {
             System.out.println("Из пустой сыплешь?");
         } else {

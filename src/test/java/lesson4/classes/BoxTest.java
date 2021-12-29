@@ -45,23 +45,6 @@ public class BoxTest {
     }
 
     @Test
-    public void testAddIncompatibleFruitToEmptyBox_expectingError() {
-        thrown.expect(IllegalArgumentException.class);
-        thrown.reportMissingExceptionWithMessage("Adding orange to an empty apple box should lead to exception");
-        Box<Apple> appleBox = new Box<>();
-        //appleBox.addFruit(new Orange());
-    }
-
-    @Test
-    public void testAddIncompatibleFruitToNonEmptyBox_expectingError() {
-        thrown.expect(IllegalArgumentException.class);
-        thrown.reportMissingExceptionWithMessage("Adding apple to a non-empty orange box should lead to exception");
-        Box<Orange> orangeBox = new Box<>();
-        orangeBox.addFruit(new Orange());
-       // orangeBox.addFruit(new Apple());
-    }
-
-    @Test
     public void test2DifferentEmptyBoxes_weightsAreTheSame() {
         Box<Apple> appleBox = new Box<>();
         Box<Orange> orangeBox = new Box<>();
