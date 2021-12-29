@@ -27,6 +27,10 @@ public class MainAppFruits {
         for (int i = 0; i < 5; i++) {
             appleBox.addFruit(new Apple());
         }
+        Box appleBox2 = new Box();
+        for (int i = 0; i < 5; i++) {
+            appleBox2.addFruit(new Apple());
+        }
         Box orangeBox = new Box();
         for (int i = 0; i < 7; i++) {
             orangeBox.addFruit(new Orange());

@@ -38,13 +38,14 @@ public class Box<A extends Fruit> {
         else return false;
     }
 
-    public void putFromAnotherBox(Box box){
-       if (box.fruitList.isEmpty()){
+    public void putToAnotherBox(Box box){
+       if (this.fruitList.isEmpty()){
            System.out.println("Из пустой сыплешь?");
        }
        else {
-           if (this.fruitList.isEmpty() || this.fruitList.get(0).getClass()==box.fruitList.get(0).getClass()){
-               fruitList.addAll(box.fruitList);
+           if (box.fruitList.isEmpty() || this.fruitList.get(0).getClass()==box.fruitList.get(0).getClass()){
+               box.fruitList.addAll(fruitList);
+               fruitList.clear();
            }
            else{
                System.out.println("Это коробки с разными фруктами");
