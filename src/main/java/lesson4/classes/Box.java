@@ -45,7 +45,9 @@ public class Box<A extends Fruit> {
        else {
            if (box.fruitList.isEmpty() || this.fruitList.get(0).getClass()==box.fruitList.get(0).getClass()){
                box.fruitList.addAll(fruitList);
+               box.boxWeight = box.boxWeight+this.boxWeight;
                fruitList.clear();
+               this.boxWeight = 0.0;
            }
            else{
                System.out.println("Это коробки с разными фруктами");
