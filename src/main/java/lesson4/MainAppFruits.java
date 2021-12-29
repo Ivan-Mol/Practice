@@ -35,6 +35,10 @@ public class MainAppFruits {
         for (int i = 0; i < 7; i++) {
             orangeBox.addFruit(new Orange());
         }
+        System.out.println(appleBox);
+        appleBox.putToAnotherBox(appleBox2);
+        System.out.println(appleBox);
+        System.out.println(appleBox2);
 
     }
 }
