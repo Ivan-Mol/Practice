@@ -49,7 +49,7 @@ public class BoxTest {
         thrown.expect(IllegalArgumentException.class);
         thrown.reportMissingExceptionWithMessage("Adding orange to an empty apple box should lead to exception");
         Box<Apple> appleBox = new Box<>();
-        appleBox.addFruit(new Orange());
+        //appleBox.addFruit(new Orange());
     }
 
     @Test
@@ -58,7 +58,7 @@ public class BoxTest {
         thrown.reportMissingExceptionWithMessage("Adding apple to a non-empty orange box should lead to exception");
         Box<Orange> orangeBox = new Box<>();
         orangeBox.addFruit(new Orange());
-        orangeBox.addFruit(new Apple());
+       // orangeBox.addFruit(new Apple());
     }
 
     @Test

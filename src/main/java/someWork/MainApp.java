@@ -12,7 +12,7 @@ public class MainApp {
         System.out.println(school.teachers.size());
         Teacher teacher = (Teacher) school.teachers.get(0);
         teacher.tellAbout();
-        ((Teacher) school.teachers.get(0)).tellAbout();
+        school.teachers.get(0).tellAbout();
 
     }
     public static  <T> ArrayList<T> addSomethingToList(T... something){

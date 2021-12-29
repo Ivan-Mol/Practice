@@ -2,10 +2,10 @@ package someWork;
 
 import java.util.ArrayList;
 
-public class School<T extends Teacher> {
-    ArrayList<T> teachers = new ArrayList<T>();
+public class School{
+    ArrayList<Teacher> teachers = new ArrayList<Teacher>();
 
-    public void addTeacher(T teacher){
+    public void addTeacher(Teacher teacher){
         teachers.add(teacher);
     }
 
