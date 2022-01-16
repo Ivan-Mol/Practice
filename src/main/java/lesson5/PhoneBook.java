@@ -21,10 +21,14 @@ public class PhoneBook {
     }
 
     public void get(String lastName){
+        if (!phoneBook.containsValue(lastName)){
+            System.out.println("Такой фамилии нет в списке");
+        }
         for (Map.Entry<Long, String> phone:phoneBook.entrySet()) {
             if (phone.getValue().equals(lastName)){
                 System.out.println(phone.getValue()+" телефон "+phone.getKey());
             }
+
         }
     }
 }
