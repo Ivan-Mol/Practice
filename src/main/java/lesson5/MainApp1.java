@@ -30,7 +30,7 @@ public class MainApp1 {
             }
         }
         for (Map.Entry<String, Integer> o: uniqElem.entrySet()) {
-            System.out.println(o.getKey() + " в колличестве "+o.getValue());
+            System.out.println(o.getKey() + " в количестве "+o.getValue());
         }
     }
 }
