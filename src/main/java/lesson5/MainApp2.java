@@ -1,9 +1,5 @@
 package lesson5;
 
-import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
-
 /*Написать простой класс Телефонный Справочник, который хранит в себе список фамилий и
 телефонных номеров. В этот телефонный справочник с помощью метода add() можно
 добавлять записи, а с помощью метода get() искать номер телефона по фамилии. Следует
@@ -20,7 +16,7 @@ public class MainApp2 {
         phoneBook.add("Petrov","89053421253");
         phoneBook.add("Sidorov","89123412122");
         phoneBook.add("Zaycev","89045652123");
-        phoneBook.get("Ivanov");
-        System.out.println(phoneBook.get("Ivanov"));
+
+        System.out.println(phoneBook.getPhonesByName("Ivanov"));
     }
 }
