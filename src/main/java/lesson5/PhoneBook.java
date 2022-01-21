@@ -1,34 +1,31 @@
 package lesson5;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class PhoneBook {
-    private HashMap<Long, String> phoneBook;
+    private Map<String, Set<String>> phoneBook;
 
     public PhoneBook() {
-        this.phoneBook = new HashMap<Long, String>();
+        this.phoneBook = new TreeMap<>();
     }
 
-    public void add(String lastName, Long phone){
-        if (lastName==null|| lastName.equals("") ||lastName.length()<2){
-            System.out.println("Фамилия указана не верно");
-        }
-        if (phone==null||phone.toString().length()<10){
-            System.out.println("телефон указан не верно");
-        }
-        phoneBook.put(phone,lastName);
+    public Set<String> get(String name){
+        return phoneBook.get(name);
     }
 
-    public void get(String lastName){
-        if (!phoneBook.containsValue(lastName)){
-            System.out.println("Такой фамилии нет в списке");
-        }
-        for (Map.Entry<Long, String> phone:phoneBook.entrySet()) {
-            if (phone.getValue().equals(lastName)){
-                System.out.println(phone.getValue()+" телефон "+phone.getKey());
-            }
+    public void add(String name, String phone){
+        boolean phoneAdded = false;
+        Set<String> phones = get(name);
 
+        if (phones==null){
+            phones = new TreeSet<>();
+            phoneAdded = phones.add(phone);
+            phoneBook.put(name,phones);
+        }
+        else {
+            phoneAdded = phones.add(phone);
         }
     }
+
+
 }

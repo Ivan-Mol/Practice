@@ -15,11 +15,12 @@ import java.util.Map;
 public class MainApp2 {
     public static void main(String[] args) {
         PhoneBook phoneBook = new PhoneBook();
-        phoneBook.add("Ivanov",89032221112L);
-        phoneBook.add("Ivanov",89045552233L);
-        phoneBook.add("Petrov",89053421253L);
-        phoneBook.add("Sidorov",89123412122L);
-        phoneBook.add("Zaycev",89045652123L);
+        phoneBook.add("Ivanov","89032221112");
+        phoneBook.add("Ivanov","89045552233");
+        phoneBook.add("Petrov","89053421253");
+        phoneBook.add("Sidorov","89123412122");
+        phoneBook.add("Zaycev","89045652123");
         phoneBook.get("Ivanov");
+        System.out.println(phoneBook.get("Ivanov"));
     }
 }
