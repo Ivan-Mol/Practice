@@ -30,7 +30,6 @@ public class TwoArrayMethods {
         Thread thread1 = new Thread(new Runnable() {
             @Override
             public void run() {
-
                 for (int i = 0; i < partOneArray.length; i++) {
                     partOneArray[ i ] = (float) (partOneArray[ i ] * Math.sin( 0.2f + i / 5) * Math.cos( 0.2f + i / 5) *
                             Math . cos ( 0.4f + i / 2 ));
@@ -51,6 +50,12 @@ public class TwoArrayMethods {
         });
         thread1.start();
         thread2.start();
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.out.println("SecondMethod TimeMillis " + (System.currentTimeMillis() - startTime));
     }
 
