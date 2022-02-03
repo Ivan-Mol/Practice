@@ -42,8 +42,10 @@ public class TwoArrayMethods {
             @Override
             public void run() {
                 for (int i = 0; i < partTwoArray.length; i++) {
-                    partTwoArray[ i ] = (float) (partTwoArray[ i ] * Math.sin( 0.2f + i / 5) * Math.cos( 0.2f + i / 5) *
-                            Math . cos ( 0.4f + i / 2 ));
+                    for (int j = HALF; j < partTwoArray.length; j++) {
+                        partTwoArray[ i ] = (float) (partTwoArray[ i ] * Math.sin( 0.2f + j / 5) * Math.cos( 0.2f + j / 5) *
+                                Math . cos ( 0.4f + j / 2 ));
+                    }
                 }
                 System.arraycopy(partTwoArray, 0, finalArr, partOneArray.length, partTwoArray.length);
             }
