@@ -41,6 +41,7 @@ public class TwoArrayMethods {
         Thread thread2 = new Thread(new Runnable() {
             @Override
             public void run() {
+                /**/
                 for (int i = 0; i < partTwoArray.length; i++) {
                     for (int j = HALF; j < partTwoArray.length; j++) {
                         partTwoArray[ i ] = (float) (partTwoArray[ i ] * Math.sin( 0.2f + j / 5) * Math.cos( 0.2f + j / 5) *
