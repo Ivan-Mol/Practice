@@ -13,12 +13,14 @@ public class MainApp {
         Race race = new Race(new Road(60), new Tunnel(), new Road(40));
         Car[] cars = new Car[CARS_COUNT];
         for (int i = 0; i < cars.length; i++) {
-            cars[i] = new Car(race, 20 + (int) (Math.random() * 10));
+            cars[i] = new Car(race, 20 + (int) (Math.random() * 10), cyclicBarrier);
             new Thread(cars[i]).start();
         }
         try {
             cyclicBarrier.await();
             System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка началась!!!");
+            cyclicBarrier.await();
+            cyclicBarrier.await();
             System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка закончилась!!!");
         }
         catch (Exception e){
