@@ -1,9 +1,7 @@
 package lesson8;
 
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -19,6 +17,38 @@ public class MainApp8 {
         //Создайте массив объектов типа Сотрудник (с полями Имя, Возраст, Зарплата) и вычислите
         //среднюю зарплату сотрудника;
 
+        Employee[] employees = {
+                new Employee("Bob",22,15000),
+                new Employee("Mo",31,25000),
+                new Employee("Sam",24,20000),
+                new Employee("El",21,40000),
+                new Employee("Elliot",42,42000),
+                new Employee("Peter",24,22000),
+        };
+
+       Double averWages = Arrays.stream(employees).mapToInt((emp)->emp.getWages()).average().getAsDouble();
+        System.out.println("Средняя ЗП "+averWages);
+
+
+        /*Напишите метод, способный найти в массиве сотрудников из п. 2 найдите N самых старших
+          сотрудников и отпечатает в консоль сообщение вида “N самых старших сотрудников зовут:
+          имя1, имя2, имяN;”.*/
+        Arrays.stream(employees)
+                .sorted((a,b)->a.getAge()-b.getAge())
+                .forEach(System.out::println);
+
+        System.out.println();
+        //sorted сортировка по возрасту
+        List<Employee> empl = Arrays.stream(employees).sorted(Comparator.comparing(Employee::getAge).reversed()).collect(Collectors.toList());
+        empl.forEach(n-> System.out.println(n));
+
 
     }
+    /*public static String getOldestEmployees(Employee[] employees){
+        return Arrays
+                .stream(employees).mapToInt((emp)->emp.getAge())
+                .sorted()
+                .
+
+    }*/
 }
