@@ -16,5 +16,9 @@ public class MainApp8 {
         String res = map.entrySet().stream().max(Map.Entry.comparingByValue()).map(Map.Entry::getKey).orElse("nothing");
         System.out.println(res);
 
+        //Создайте массив объектов типа Сотрудник (с полями Имя, Возраст, Зарплата) и вычислите
+        //среднюю зарплату сотрудника;
+
+
     }
 }
