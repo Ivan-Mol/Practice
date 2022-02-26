@@ -3,6 +3,7 @@ package lesson8;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class MainApp8 {
@@ -31,11 +32,16 @@ public class MainApp8 {
 
 
         /*Напишите метод, способный найти в массиве сотрудников из п. 2 найдите N самых старших
-          сотрудников*/
-        Arrays.stream(employees).sorted((a,b)->a.getAge()-b.getAge()).limit(3).map(Employee::getName).forEach(System.out::println);
+          сотрудников и отпечатает в консоль сообщение вида “N самых старших сотрудников зовут:
+          имя1, имя2, имяN;”.*/
+        String s =  Arrays.stream(employees)
+                .sorted((a,b)->a.getAge()-b.getAge())
+                .limit(3).map(Employee::getName)
+                .collect(Collectors.joining(", ", 3 + " самых старших сотрудников зовут: ", "."));
 
+        System.out.println(s);
 
 
     }
-}
 
+}
