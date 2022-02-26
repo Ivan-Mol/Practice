@@ -36,7 +36,8 @@ public class MainApp8 {
         List<Employee> list = Arrays.stream(employees)
                             .sorted(Comparator.comparing(Employee::getAge)
                             .reversed()).limit(3).collect(Collectors.toList());
-        System.out.println("Самые старшие: "+list.toString());
+        System.out.print(list.size() + " самых старших сотрудников зовут: ");
+        list.stream().forEach((a)-> System.out.print(a.getName()+" "));
 
 
 
