@@ -31,16 +31,11 @@ public class MainApp8 {
 
 
         /*Напишите метод, способный найти в массиве сотрудников из п. 2 найдите N самых старших
-          сотрудников и отпечатает в консоль сообщение вида “N самых старших сотрудников зовут:
-          имя1, имя2, имяN;”.*/
-        List<Employee> list = Arrays.stream(employees)
-                            .sorted(Comparator.comparing(Employee::getAge)
-                            .reversed()).limit(3).collect(Collectors.toList());
-        System.out.print(list.size() + " самых старших сотрудников зовут: ");
-        list.stream().forEach((a)-> System.out.print(a.getName()+" "));
+          сотрудников*/
+        Arrays.stream(employees).sorted((a,b)->a.getAge()-b.getAge()).limit(3).map(Employee::getName).forEach(System.out::println);
 
 
 
     }
-
 }
+
