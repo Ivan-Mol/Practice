@@ -14,7 +14,7 @@ public class MainApp8 {
         String res = map.entrySet().stream().max(Map.Entry.comparingByValue()).map(Map.Entry::getKey).orElse("nothing");
         System.out.println(res);
 
-        //Создайте массив объектов типа Сотрудник (с полями Имя, Возраст, Зарплата) и вычислите
+        //П.2 Создайте массив объектов типа Сотрудник (с полями Имя, Возраст, Зарплата) и вычислите
         //среднюю зарплату сотрудника;
 
         Employee[] employees = {
@@ -33,22 +33,13 @@ public class MainApp8 {
         /*Напишите метод, способный найти в массиве сотрудников из п. 2 найдите N самых старших
           сотрудников и отпечатает в консоль сообщение вида “N самых старших сотрудников зовут:
           имя1, имя2, имяN;”.*/
-        Arrays.stream(employees)
-                .sorted((a,b)->a.getAge()-b.getAge())
-                .forEach(System.out::println);
+        List<Employee> list = Arrays.stream(employees)
+                            .sorted(Comparator.comparing(Employee::getAge)
+                            .reversed()).limit(3).collect(Collectors.toList());
+        System.out.println("Самые старшие: "+list.toString());
 
-        System.out.println();
-        //sorted сортировка по возрасту
-        List<Employee> empl = Arrays.stream(employees).sorted(Comparator.comparing(Employee::getAge).reversed()).collect(Collectors.toList());
-        empl.forEach(n-> System.out.println(n));
 
 
     }
-    /*public static String getOldestEmployees(Employee[] employees){
-        return Arrays
-                .stream(employees).mapToInt((emp)->emp.getAge())
-                .sorted()
-                .
 
-    }*/
 }
