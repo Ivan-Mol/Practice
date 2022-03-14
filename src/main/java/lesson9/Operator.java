@@ -42,7 +42,6 @@ public class Operator {
         map.put(String.class,"TEXT");
         for (Field f: fields) {
             if (f.isAnnotationPresent(Column.class)){
-
                 strBldr.append(f.getName());
                 strBldr.append(" ");
                 strBldr.append(map.get(f.getType()));
