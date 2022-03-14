@@ -1,0 +1,102 @@
+Index: src/main/java/lesson8/MainApp8.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package lesson8;\r\n\r\nimport java.util.Arrays;\r\nimport java.util.Collections;\r\nimport java.util.Comparator;\r\n\r\n\r\npublic class MainApp8 {\r\n    public static void main(String[] args) {\r\n        //Создайте массив с набором слов, и с помощью Stream API найдите наиболее часто\r\n        //встречающееся;\r\n        String[] strings = {\"один\", \"два\", \"два\", \"три\", \"четыре\", \"пять\", \"шесть\"};\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/lesson8/MainApp8.java b/src/main/java/lesson8/MainApp8.java
+--- a/src/main/java/lesson8/MainApp8.java	(revision 72e2637df6064380c003cbef3d4318c64eccf4e3)
++++ b/src/main/java/lesson8/MainApp8.java	(date 1647275424434)
+@@ -1,15 +1,47 @@
+ package lesson8;
+ 
+-import java.util.Arrays;
+-import java.util.Collections;
+-import java.util.Comparator;
+ 
++import java.util.*;
++import java.util.function.Function;
++import java.util.stream.Collector;
++import java.util.stream.Collectors;
+ 
+ public class MainApp8 {
+     public static void main(String[] args) {
+         //Создайте массив с набором слов, и с помощью Stream API найдите наиболее часто
+         //встречающееся;
+         String[] strings = {"один", "два", "два", "три", "четыре", "пять", "шесть"};
++        Map<String,Long> map = Arrays.stream(strings).collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
++        String res = map.entrySet().stream().max(Map.Entry.comparingByValue()).map(Map.Entry::getKey).orElse("nothing");
++        System.out.println(res);
++
++        //П.2 Создайте массив объектов типа Сотрудник (с полями Имя, Возраст, Зарплата) и вычислите
++        //среднюю зарплату сотрудника;
+ 
++        Employee[] employees = {
++                new Employee("Bob",22,15000),
++                new Employee("Mo",31,25000),
++                new Employee("Sam",24,20000),
++                new Employee("El",21,40000),
++                new Employee("Elliot",42,42000),
++                new Employee("Peter",24,22000),
++        };
++
++        Double averWages = Arrays.stream(employees).mapToInt((emp)->emp.getWages()).average().getAsDouble();
++        System.out.println("Средняя ЗП "+averWages);
++
++
++        /*Напишите метод, способный найти в массиве сотрудников из п. 2 найдите N самых старших
++          сотрудников и отпечатает в консоль сообщение вида “N самых старших сотрудников зовут:
++          имя1, имя2, имяN;”.*/
++        String s =  Arrays.stream(employees)
++                .sorted((a,b)->a.getAge()-b.getAge())
++                .limit(3).map(Employee::getName)
++                .collect(Collectors.joining(", ", 3 + " самых старших сотрудников зовут: ", "."));
++
++        System.out.println(s);
++
++
+     }
+-}
++
++}
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CompilerConfiguration\">\r\n    <annotationProcessing>\r\n      <profile name=\"Maven default annotation processors profile\" enabled=\"true\">\r\n        <sourceOutputDir name=\"target/generated-sources/annotations\" />\r\n        <sourceTestOutputDir name=\"target/generated-test-sources/test-annotations\" />\r\n        <outputRelativeToContentRoot value=\"true\" />\r\n        <module name=\"Practice\" />\r\n      </profile>\r\n    </annotationProcessing>\r\n    <bytecodeTargetLevel target=\"13\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	(revision 72e2637df6064380c003cbef3d4318c64eccf4e3)
++++ b/.idea/compiler.xml	(date 1647275493728)
+@@ -9,6 +9,6 @@
+         <module name="Practice" />
+       </profile>
+     </annotationProcessing>
+-    <bytecodeTargetLevel target="13" />
++    <bytecodeTargetLevel target="15" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_8\" default=\"false\" project-jdk-name=\"17\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 72e2637df6064380c003cbef3d4318c64eccf4e3)
++++ b/.idea/misc.xml	(date 1647275513254)
+@@ -8,7 +8,7 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="17" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_13" project-jdk-name="17" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
