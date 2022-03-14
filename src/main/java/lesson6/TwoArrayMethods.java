@@ -24,9 +24,9 @@ public class TwoArrayMethods {
         float [] array2 = new float [ SIZE ];
         Arrays.fill(array2,1);
         long startTime = System.currentTimeMillis();
-        float[] partOneArray = Arrays.copyOfRange(array2,0,HALF);
-        float[] partTwoArray = Arrays.copyOfRange(array2,HALF,array2.length);
-        float[] finalArr = new float[partOneArray.length + partTwoArray.length];
+        final float[] partOneArray = Arrays.copyOfRange(array2,0,HALF);
+        final float[] partTwoArray = Arrays.copyOfRange(array2,HALF,array2.length);
+        final float[] finalArr = new float[partOneArray.length + partTwoArray.length];
         Thread thread1 = new Thread(new Runnable() {
             @Override
             public void run() {
